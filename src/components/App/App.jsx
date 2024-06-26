@@ -11,7 +11,6 @@ export default function App() {
       try {
         setIsLoading(true);
         const data = await fetchArticles();
-        setIsLoading(false);
         setError(false);
         setArticles(data);
       } catch (error) {
@@ -22,6 +21,7 @@ export default function App() {
     }
     getArticles();
   }, []);
+
   return (
     <div>
       <h1>HTTP requests</h1>
