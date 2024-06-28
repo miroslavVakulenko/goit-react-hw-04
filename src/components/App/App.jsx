@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import fetchArticles from '../../articles-api';
 import ArticlesList from '../ArticlesList/ArticlesList';
 import SearchForm from '../SearchForm/SearchForm';
