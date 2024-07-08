@@ -26,7 +26,7 @@ const fetchArticles = async (searchQuery, currentPage) => {
   const response = await axios.get('/search', {
     params: {
       query: searchQuery,
-      hitsPerPage: 10,
+      hitsPerPage: 2,
       page: currentPage,
     },
   });
