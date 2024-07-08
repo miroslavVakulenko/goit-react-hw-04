@@ -10,24 +10,8 @@ export default function App() {
   const [page, setPage] = useState(1);
   // setQuery its for pagination for remember query on other pages
   const [query, setQuery] = useState('');
-  //if we neednt input value for fetch, if we need fetch already page is opened, we use useEffect().
-  // useEffect(() => {
-  //   async function getArticles() {
-  //     try {
-  //       setIsLoading(true);
-  //       const data = await fetchArticles();
-  //       setError(false);
-  //       setArticles(data);
-  //     } catch (error) {
-  //       setError(true);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   getArticles();
-  // }, []);
 
-  const handleSearch = async newQuery => {
+  const handleSearch = newQuery => {
     setQuery(newQuery);
     setPage(1);
     //for next search to clear ul
@@ -45,9 +29,10 @@ export default function App() {
     }
     async function getArticles() {
       try {
+        setError(false);
         setIsLoading(true);
         const data = await fetchArticles(query, page);
-        //pattern: how rest el from State
+        //pattern: how rest el from State. react add to arg (prevArticles) prev State.
         setArticles(prevArticles => {
           return [...prevArticles, ...data];
         });
@@ -77,3 +62,21 @@ export default function App() {
     </div>
   );
 }
+
+// if we don't need pagination we make request into handleSearch
+// useEffect(() => {
+//   async function getArticles() {
+//     try {
+//       setIsLoading(true);
+//       const data = await fetchArticles("html");
+//       setArticles(data);
+//     } catch (error) {
+//       setError(true);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   }
+//   getArticles();
+// }, []);
+
+//css loaders for react https://www.davidhu.io/react-spinners/
