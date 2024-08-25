@@ -1,6 +1,6 @@
 import ImageCard from './ImageCard/ImageCard';
 
-export default function ImageGallery() {
+function ImageGallery(images) {
   return (
     <ul>
       {/* Набір елементів списку із зображеннями */}
@@ -10,3 +10,4 @@ export default function ImageGallery() {
     </ul>
   );
 }
+export default ImageGallery;
