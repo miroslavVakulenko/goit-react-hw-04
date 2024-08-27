@@ -2,7 +2,7 @@ import SearchBar from '../SearchBar/SearchBar';
 // import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
 // import Loader from '../Loader/Loader';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import fetchImages from '../../images-api';
 // import ImageModal from '../ImageModal/ImageModal';
@@ -17,15 +17,23 @@ export default function App() {
     // console.log(searchValue.query);
     setSearchValue(searchValue.query);
   };
-  async function getImages() {
-    try {
-      const data = await fetchImages(searchValue);
-      setImages(data);
-    } catch (error) {
-      console.log(error);
+
+  useEffect(() => {
+    if (searchValue) {
+      const getImages = async () => {
+        try {
+          const data = await fetchImages(searchValue);
+          setImages(data);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          console.log('loading');
+        }
+      };
+      getImages();
     }
-  }
-  getImages();
+  }, [searchValue]);
+
   return (
     <div>
       <SearchBar handleSubmit={handleSubmit} />
