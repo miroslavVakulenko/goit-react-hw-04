@@ -27,7 +27,7 @@ export default function App() {
         } catch (error) {
           console.log(error);
         } finally {
-          console.log('loading');
+          console.log('done');
         }
       };
       getImages();
@@ -38,7 +38,7 @@ export default function App() {
     <div>
       <SearchBar handleSubmit={handleSubmit} />
       {searchValue.length < 1 && <ErrorMessage />}
-      <ImageGallery data={images} />
+      <ImageGallery images={images} />
     </div>
   );
 }
