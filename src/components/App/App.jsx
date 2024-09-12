@@ -1,4 +1,6 @@
 import SearchBar from '../SearchBar/SearchBar';
+import 'modern-css-reset';
+import css from './App.module.css';
 // import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
 // import Loader from '../Loader/Loader';
@@ -35,7 +37,7 @@ export default function App() {
   }, [searchValue]);
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <SearchBar handleSubmit={handleSubmit} />
       {searchValue.length < 1 && <ErrorMessage />}
       <ImageGallery images={images} />

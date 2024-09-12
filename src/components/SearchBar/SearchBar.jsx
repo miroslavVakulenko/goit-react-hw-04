@@ -1,5 +1,7 @@
 import { Formik, ErrorMessage, Form, Field } from 'formik';
-
+import css from './SearchBar.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 function SearchBar({ handleSubmit }) {
   return (
     <header>
@@ -10,16 +12,21 @@ function SearchBar({ handleSubmit }) {
           actions.resetForm();
         }}
       >
-        <Form>
-          <Field
-            name="query"
-            type="text"
-            // autocomplete="off"
-            // autofocus
-            placeholder="Search images and photos"
-          />
-          <ErrorMessage name="query" component="div" />
-          <button type="submit">Search</button>
+        <Form className={css.form}>
+          <div className={css.inputContainer}>
+            <Field
+              className={css.field}
+              name="query"
+              type="text"
+              // autocomplete="off"
+              // autofocus
+              placeholder="Search images and photos"
+            />
+            <button className={css.searchButton} type="submit">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+            <ErrorMessage name="query" component="div" />
+          </div>
         </Form>
       </Formik>
     </header>
