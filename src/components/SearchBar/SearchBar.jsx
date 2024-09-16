@@ -1,10 +1,11 @@
+// src\components\SearchBar\SearchBar.jsx
 import { Formik, ErrorMessage, Form, Field } from 'formik';
 import css from './SearchBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 function SearchBar({ handleSubmit }) {
   return (
-    <header>
+    <header className={css.header}>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, actions) => {
@@ -18,8 +19,8 @@ function SearchBar({ handleSubmit }) {
               className={css.field}
               name="query"
               type="text"
-              // autocomplete="off"
-              // autofocus
+              autocomplete="off"
+              autofocus
               placeholder="Search images and photos"
             />
             <button className={css.searchButton} type="submit">

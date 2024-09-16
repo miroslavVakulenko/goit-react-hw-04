@@ -1,7 +1,21 @@
-.form{
-  /* display: flex;
-  margin-bottom: 1.5rem; */
+/* src\components\SearchBar\SearchBar.module.css */
+
+.header {
   width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+
+  /* z-index: 1000; */
+
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+ 
+.form{
+
   max-width: 400px;
   margin: 0 auto;
 }
@@ -40,4 +54,4 @@
 .search-button .fa-search {
   color: #a51c1c;
   font-size: 20px;
-}
+} 

@@ -1,6 +1,8 @@
+// src\components\App\App.jsx
 import SearchBar from '../SearchBar/SearchBar';
-import 'modern-css-reset';
 import css from './App.module.css';
+import 'modern-css-reset';
+
 // import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
 // import Loader from '../Loader/Loader';
@@ -8,6 +10,7 @@ import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import fetchImages from '../../images-api';
 // import ImageModal from '../ImageModal/ImageModal';
+
 export default function App() {
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -18,6 +21,9 @@ export default function App() {
   const handleSubmit = searchValue => {
     // console.log(searchValue.query);
     setSearchValue(searchValue.query);
+  };
+  const clearItems = () => {
+    setImages([]);
   };
 
   useEffect(() => {
@@ -38,7 +44,9 @@ export default function App() {
 
   return (
     <div className={css.wrapper}>
+      <h4>Search</h4>
       <SearchBar className={css.searchBar} handleSubmit={handleSubmit} />
+      <button onClick={clearItems}>Clear List</button>
       <p>under searxh</p>
       {searchValue.length < 1 && <ErrorMessage />}
       <ImageGallery images={images} />
