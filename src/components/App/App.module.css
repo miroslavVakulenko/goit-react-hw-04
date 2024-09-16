@@ -16,3 +16,7 @@ ul {
   align-items: center;
 }
 
+.searchBar{
+  position: sticky;
+  margin: 0 auto;
+}

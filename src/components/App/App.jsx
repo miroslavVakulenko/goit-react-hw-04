@@ -38,7 +38,8 @@ export default function App() {
 
   return (
     <div className={css.wrapper}>
-      <SearchBar handleSubmit={handleSubmit} />
+      <SearchBar className={css.searchBar} handleSubmit={handleSubmit} />
+      <p>under searxh</p>
       {searchValue.length < 1 && <ErrorMessage />}
       <ImageGallery images={images} />
     </div>
