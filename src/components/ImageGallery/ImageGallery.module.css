@@ -1,0 +1,5 @@
+.imageList{
+  display: grid;
+  grid-template-columns: 17rem 17rem 17rem 17rem;
+  grid-gap: 3rem;
+}

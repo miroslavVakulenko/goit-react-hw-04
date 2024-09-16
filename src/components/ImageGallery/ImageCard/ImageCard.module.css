@@ -1,0 +1,8 @@
+.imgContainer{
+  width: 18rem;
+  height: 15rem;
+  overflow: hidden;
+}
+.img{
+  object-fit:cover;
+}

@@ -22,7 +22,7 @@ const ACCESS_KEY = 'eYYSGZUWWTTgB6f6zSeTfY9VgEQjgKmW1m7dd8IhXGQ'; // Replace wit
 const fetchImages = async (query, page = 1) => {
   try {
     const response = await axios.get(`https://api.unsplash.com/search/photos`, {
-      params: { query, per_page: 10, page },
+      params: { query, per_page: 40, page },
       headers: {
         Authorization: `Client-ID ${ACCESS_KEY}`,
       },

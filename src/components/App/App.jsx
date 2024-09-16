@@ -49,7 +49,9 @@ export default function App() {
       <button onClick={clearItems}>Clear List</button>
       <p>under searxh</p>
       {searchValue.length < 1 && <ErrorMessage />}
-      <ImageGallery images={images} />
+      <div className={css.gallery}>
+        <ImageGallery images={images} />
+      </div>
     </div>
   );
 }
