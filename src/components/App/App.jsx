@@ -14,6 +14,8 @@ import fetchImages from '../../images-api';
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
+  const [notification, setNotification] = useState(false);
+
   const [searchValue, setSearchValue] = useState('');
   const [images, setImages] = useState([]);
   console.log(images);
@@ -23,6 +25,7 @@ export default function App() {
   const handleSubmit = searchValue => {
     // console.log(searchValue.query);
     setSearchValue(searchValue.query);
+    setNotification(false);
   };
   const clearItems = () => {
     setImages([]);
@@ -51,13 +54,21 @@ export default function App() {
     setPage(prevPage => prevPage + 1);
   };
 
+  const handleNotification = () => {
+    setNotification(true);
+  };
+
   return (
     <div className={css.wrapper}>
       <h4>Search</h4>
-      <SearchBar className={css.searchBar} handleSubmit={handleSubmit} />
+      <SearchBar
+        className={css.searchBar}
+        handleSubmit={handleSubmit}
+        errorNotification={handleNotification}
+      />
       <button onClick={clearItems}>Clear List</button>
-      <p>under searxh</p>
-      {searchValue.length < 1 && <ErrorMessage />}
+      {/* {searchValue.length < 1 && <ErrorMessage notification={notification} />} */}
+      {notification && <ErrorMessage />}
       {isLoading && <Loader />}
       <div className={css.gallery}>
         <ImageGallery images={images} />

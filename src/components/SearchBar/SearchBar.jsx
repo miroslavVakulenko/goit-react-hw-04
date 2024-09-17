@@ -3,13 +3,19 @@ import { Formik, ErrorMessage, Form, Field } from 'formik';
 import css from './SearchBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-function SearchBar({ handleSubmit }) {
+import toast from 'react-hot-toast';
+function SearchBar({ handleSubmit, errorNotification }) {
   return (
     <header className={css.header}>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, actions) => {
-          handleSubmit(values);
+          if (values.query.trim() === '') {
+            toast.error('Please enter a search query!');
+            errorNotification();
+          } else {
+            handleSubmit(values);
+          }
           actions.resetForm();
         }}
       >
