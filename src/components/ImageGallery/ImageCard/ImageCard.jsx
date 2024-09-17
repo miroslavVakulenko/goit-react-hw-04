@@ -1,6 +1,5 @@
 import css from './ImageCard.module.css';
 function ImageCard({ image }) {
-  console.log(image);
   return (
     <div className={css.imgContainer}>
       <img

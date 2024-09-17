@@ -19,8 +19,8 @@ function SearchBar({ handleSubmit }) {
               className={css.field}
               name="query"
               type="text"
-              autocomplete="off"
-              autofocus
+              // autocomplete="off"
+              // autofocus
               placeholder="Search images and photos"
             />
             <button className={css.searchButton} type="submit">

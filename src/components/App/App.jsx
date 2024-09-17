@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import css from './App.module.css';
 import 'modern-css-reset';
 
-// import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
@@ -18,6 +18,8 @@ export default function App() {
   const [images, setImages] = useState([]);
   console.log(images);
 
+  const [page, setPage] = useState(1);
+
   const handleSubmit = searchValue => {
     // console.log(searchValue.query);
     setSearchValue(searchValue.query);
@@ -31,10 +33,11 @@ export default function App() {
       const getImages = async () => {
         try {
           setIsLoading(true);
-          const data = await fetchImages(searchValue);
-          setImages(data);
+          const data = await fetchImages(searchValue, page);
+          setImages(prevImages => [...prevImages, ...data]);
         } catch (error) {
           console.log(error);
+          throw error;
         } finally {
           console.log('done');
           setIsLoading(false);
@@ -42,7 +45,11 @@ export default function App() {
       };
       getImages();
     }
-  }, [searchValue]);
+  }, [searchValue, page]);
+
+  const loadMoreImg = () => {
+    setPage(prevPage => prevPage + 1);
+  };
 
   return (
     <div className={css.wrapper}>
@@ -55,6 +62,13 @@ export default function App() {
       <div className={css.gallery}>
         <ImageGallery images={images} />
       </div>
+      {images.length > 0 && (
+        <LoadMoreBtn
+          onClick={loadMoreImg}
+          isLoading={isLoading}
+          loader={<Loader />}
+        />
+      )}
     </div>
   );
 }
