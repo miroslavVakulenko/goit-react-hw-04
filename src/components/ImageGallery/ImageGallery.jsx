@@ -5,7 +5,7 @@ function ImageGallery({ images }) {
   return (
     <ul className={css.imageList}>
       {images.map(image => (
-        <li key={image.id}>
+        <li className={css.galleryItem} key={image.id}>
           <ImageCard image={image} />
         </li>
       ))}

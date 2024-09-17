@@ -1,5 +1,8 @@
 .imageList{
   display: grid;
-  grid-template-columns: 17rem 17rem 17rem 17rem;
-  grid-gap: 3rem;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+.galleryItem{
+  height: 20rem;
 }

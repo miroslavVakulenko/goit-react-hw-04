@@ -16,12 +16,11 @@
 .form{
 
   max-width: 400px;
-  margin: 0 auto;
+
 }
 
 .inputContainer{
   position: relative;
-  width: 100%;
 }
 .field {
   border-radius: 7px;

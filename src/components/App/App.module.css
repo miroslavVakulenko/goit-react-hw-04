@@ -18,13 +18,4 @@ ul {
   padding-top: 4rem;
 }
 
-.searchBar{
-  position: sticky;
-  margin: 0 auto;
-  margin-left: 100px;
-  /* z-index: 1000; */
-}
 
-.gallery{
-  width: 1280px;
-}
