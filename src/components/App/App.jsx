@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import fetchImages from '../../images-api';
-// import ImageModal from '../ImageModal/ImageModal';
+import ImageModal from '../ImageModal/ImageModal';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,6 +69,7 @@ export default function App() {
           loader={<Loader />}
         />
       )}
+      <ImageModal />
     </div>
   );
 }
