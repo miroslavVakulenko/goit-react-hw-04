@@ -59,9 +59,10 @@ export default function App() {
       <p>under searxh</p>
       {searchValue.length < 1 && <ErrorMessage />}
       {isLoading && <Loader />}
-      <div className={css.gallery}>
+      {images.length > 0 && <div className={css.gallery}>
         <ImageGallery images={images} />
-      </div>
+      </div>}
+      
       {images.length > 0 && (
         <LoadMoreBtn
           onClick={loadMoreImg}
