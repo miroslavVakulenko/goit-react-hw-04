@@ -16,9 +16,10 @@ export default function App() {
 
   const [searchValue, setSearchValue] = useState('');
   const [images, setImages] = useState([]);
-  console.log(images);
+  // console.log(images);
 
   const [page, setPage] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleSubmit = searchValue => {
     // console.log(searchValue.query);
@@ -51,6 +52,11 @@ export default function App() {
     setPage(prevPage => prevPage + 1);
   };
 
+  const handleImageClick = selectedImage => {
+    setSelectedImage(selectedImage);
+    console.log('!!!!!!!!', selectedImage);
+  };
+
   return (
     <div className={css.wrapper}>
       <h4>Search</h4>
@@ -59,10 +65,12 @@ export default function App() {
       <p>under searxh</p>
       {searchValue.length < 1 && <ErrorMessage />}
       {isLoading && <Loader />}
-      {images.length > 0 && <div className={css.gallery}>
-        <ImageGallery images={images} />
-      </div>}
-      
+      {images.length > 0 && (
+        <div className={css.gallery}>
+          <ImageGallery onImageClick={handleImageClick} images={images} />
+        </div>
+      )}
+
       {images.length > 0 && (
         <LoadMoreBtn
           onClick={loadMoreImg}

@@ -1,7 +1,7 @@
 import css from './ImageCard.module.css';
-function ImageCard({ image }) {
+function ImageCard({ image, onImageClick }) {
   return (
-    <div className={css.imgContainer}>
+    <div onClick={onImageClick(image)} className={css.imgContainer}>
       <img
         className={css.img}
         src={image.urls.regular}

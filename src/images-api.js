@@ -27,7 +27,6 @@ const fetchImages = async (query, page = 1) => {
         Authorization: `Client-ID ${ACCESS_KEY}`,
       },
     });
-    console.log('a');
     return response.data.results;
   } catch (error) {
     console.error('Error fetching data from Unsplash:', error);

@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import React from 'react';
-function ImageModal() {
+function ImageModal({ selectedImage, setSelectedImage }) {
   const customStyles = {
     content: {
       top: '50%',
@@ -24,30 +24,27 @@ function ImageModal() {
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setSelectedImage(selectedImage);
   }
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
+      {/* Show modal only if selectedImage is set */}
+      {selectedImage && (
+        <Modal
+          isOpen={Boolean(selectedImage)}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Image Modal"
+        >
+          <h2>{selectedImage.alt_description}</h2>
+          <img
+            src={selectedImage.urls.regular}
+            alt={selectedImage.alt_description}
+          />
+          <button onClick={closeModal}>Close</button>
+        </Modal>
+      )}
     </div>
   );
 }
