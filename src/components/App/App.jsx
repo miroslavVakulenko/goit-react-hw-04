@@ -2,6 +2,7 @@
 import SearchBar from '../SearchBar/SearchBar';
 import css from './App.module.css';
 import 'modern-css-reset';
+import toast from 'react-hot-toast';
 
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
@@ -13,7 +14,7 @@ import fetchImages from '../../images-api';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [error, setError] = useState(false);
   const [notification, setNotification] = useState(false);
 
   const [searchValue, setSearchValue] = useState('');
@@ -38,9 +39,11 @@ export default function App() {
           setIsLoading(true);
           const data = await fetchImages(searchValue, page);
           setImages(prevImages => [...prevImages, ...data]);
-        } catch (error) {
-          console.log(error);
-          throw error;
+        } catch (err) {
+          console.log(err);
+          console.log('aaaaa');
+          setError(true);
+          handleErrorNotification();
         } finally {
           console.log('done');
           setIsLoading(false);
@@ -58,8 +61,12 @@ export default function App() {
     setNotification(true);
   };
 
+  const handleErrorNotification = () => {
+    toast.error('An error occurred while fetching images');
+  };
   return (
     <div className={css.wrapper}>
+      {error && <ErrorMessage />}
       <h4>Search</h4>
       <SearchBar
         className={css.searchBar}
