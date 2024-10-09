@@ -31,6 +31,18 @@ export default function App() {
   const clearItems = () => {
     setImages([]);
   };
+  const clearListuttonStyle = {
+    backgroundColor: '#007bff3b',
+    color: 'white',
+    padding: '12px 24px',
+    fontSize: '16px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+    margin: '20px auto',
+    display: 'block',
+  };
 
   useEffect(() => {
     if (searchValue) {
@@ -73,8 +85,12 @@ export default function App() {
         handleSubmit={handleSubmit}
         errorNotification={handleNotification}
       />
-      <button onClick={clearItems}>Clear List</button>
-      {/* {searchValue.length < 1 && <ErrorMessage notification={notification} />} */}
+      {images.length > 0 && (
+        <button style={clearListuttonStyle} onClick={clearItems}>
+          Clear List
+        </button>
+      )}
+
       {notification && <ErrorMessage />}
       {isLoading && <Loader />}
       <div className={css.gallery}>

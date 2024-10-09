@@ -1,7 +1,15 @@
+import css from './LoadMoreBtn.module.css';
+
 function LoadMoreBtn({ onClick, isLoading, loader }) {
   return (
-    <div>
-      {isLoading ? loader : <button onClick={onClick}>Load More</button>}
+    <div className={css.loadBtnWrapper}>
+      {isLoading ? (
+        loader
+      ) : (
+        <button className={css.loadBtn} onClick={onClick}>
+          Load More
+        </button>
+      )}
     </div>
   );
 }
