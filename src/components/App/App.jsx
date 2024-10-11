@@ -10,7 +10,7 @@ import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import fetchImages from '../../images-api';
-// import ImageModal from '../ImageModal/ImageModal';
+import ImageModal from '../ImageModal/ImageModal';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,23 @@ export default function App() {
 
   const [searchValue, setSearchValue] = useState('');
   const [images, setImages] = useState([]);
-  console.log(images);
+
+  // Modal
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = image => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
+
+  // Modal
 
   const [page, setPage] = useState(1);
 
@@ -94,8 +110,13 @@ export default function App() {
       {notification && <ErrorMessage />}
       {isLoading && <Loader />}
       <div className={css.gallery}>
-        <ImageGallery images={images} />
+        <ImageGallery images={images} onImageClick={handleImageClick} />
       </div>
+      <ImageModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        image={selectedImage}
+      />
       {images.length > 0 && (
         <LoadMoreBtn
           onClick={loadMoreImg}
