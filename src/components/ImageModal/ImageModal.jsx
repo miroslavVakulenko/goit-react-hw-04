@@ -4,7 +4,7 @@ import css from './ImageModal.module.css';
 
 Modal.setAppElement('#root'); // Потрібно для доступності
 
-export default function ImageModal({ isOpen, onRequestClose, image }) {
+function ImageModal({ isOpen, onRequestClose, image }) {
   return (
     <Modal
       isOpen={isOpen}
@@ -26,3 +26,4 @@ export default function ImageModal({ isOpen, onRequestClose, image }) {
     </Modal>
   );
 }
+export default ImageModal;
