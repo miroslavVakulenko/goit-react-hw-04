@@ -17,11 +17,12 @@ function ImageModal({ isOpen, onRequestClose, image }) {
         &times;
       </button>
       {image && (
-        <img
-          className={css.modalImage}
-          src={image.urls.regular}
-          alt={image.alt_description}
-        />
+        <div className="imgContainer"><img
+        className={css.modalImage}
+        src={image.urls.regular}
+        alt={image.alt_description}
+      /></div>
+        
       )}
     </Modal>
   );

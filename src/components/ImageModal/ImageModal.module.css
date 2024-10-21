@@ -1,0 +1,20 @@
+.modal{
+    position: absolute;
+    inset: 30px;
+    border: 1px solid rgb(204, 204, 204);
+    background:rgb(76 79 79);
+
+    overflow: auto;
+    border-radius: 8px;
+    outline: none;
+    padding: 20px;
+}
+.closeButton{
+    background-color: gray;
+    margin-bottom: 1rem;
+}
+
+.modalImage{
+    border-radius: 8px;
+
+}
