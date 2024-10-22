@@ -3,6 +3,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import css from './App.module.css';
 import 'modern-css-reset';
 import toast from 'react-hot-toast';
+import ClearButton from './ClearButton/ClearButton';
 
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
@@ -101,11 +102,7 @@ export default function App() {
         handleSubmit={handleSubmit}
         errorNotification={handleNotification}
       />
-      {images.length > 0 && (
-        <button style={clearListuttonStyle} onClick={clearItems}>
-          Clear List
-        </button>
-      )}
+      {images.length > 0 && <ClearButton onClick={clearItems}/>}
 
       {notification && <ErrorMessage />}
       {isLoading && <Loader />}

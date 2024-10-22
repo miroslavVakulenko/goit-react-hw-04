@@ -14,7 +14,12 @@
     margin-bottom: 1rem;
 }
 
+.imgContainer{
+    position: relative;
+}
+
 .modalImage{
     border-radius: 8px;
-
+    width: 100%;
+    height: auto;
 }
