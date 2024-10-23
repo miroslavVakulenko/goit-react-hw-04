@@ -4,5 +4,5 @@
   grid-template-columns: repeat(4, 1fr);
 }
 .galleryItem{
-  height: 20rem;
+  max-height: 20rem;
 }

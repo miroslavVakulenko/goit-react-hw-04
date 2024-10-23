@@ -41,24 +41,11 @@ export default function App() {
   const [page, setPage] = useState(1);
 
   const handleSubmit = searchValue => {
-    // console.log(searchValue.query);
     setSearchValue(searchValue.query);
     setNotification(false);
   };
   const clearItems = () => {
     setImages([]);
-  };
-  const clearListuttonStyle = {
-    backgroundColor: '#007bff3b',
-    color: 'white',
-    padding: '12px 24px',
-    fontSize: '16px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-    margin: '20px auto',
-    display: 'block',
   };
 
   useEffect(() => {
@@ -69,12 +56,9 @@ export default function App() {
           const data = await fetchImages(searchValue, page);
           setImages(prevImages => [...prevImages, ...data]);
         } catch (err) {
-          console.log(err);
-          console.log('aaaaa');
           setError(true);
           handleErrorNotification();
         } finally {
-          console.log('done');
           setIsLoading(false);
         }
       };
