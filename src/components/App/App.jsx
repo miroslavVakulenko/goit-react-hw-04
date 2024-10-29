@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import css from './App.module.css';
 import 'modern-css-reset';
 import toast from 'react-hot-toast';
-import ClearButton from './ClearButton/ClearButton';
+import ClearButton from '../ClearButton/ClearButton.jsx';
 
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageGallery from '../ImageGallery/ImageGallery';
