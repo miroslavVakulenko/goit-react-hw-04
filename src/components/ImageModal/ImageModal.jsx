@@ -12,7 +12,7 @@ function ImageModal({ isOpen, onRequestClose, image }) {
       contentLabel="Image Modal"
       className={css.modal}
       overlayClassName={css.overlay}
-    >
+    > <div className={css.modalContent}>
       <button className={css.closeButton} onClick={onRequestClose}>
         &times;
       </button>
@@ -22,8 +22,9 @@ function ImageModal({ isOpen, onRequestClose, image }) {
         src={image.urls.regular}
         alt={image.alt_description}
       /></div>
-        
       )}
+    </div>
+      
     </Modal>
   );
 }

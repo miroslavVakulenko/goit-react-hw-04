@@ -43,6 +43,8 @@ export default function App() {
   const handleSubmit = searchValue => {
     setSearchValue(searchValue.query);
     setNotification(false);
+    setImages([]); 
+    setPage(1);
   };
   const clearItems = () => {
     setImages([]);

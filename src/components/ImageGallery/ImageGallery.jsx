@@ -10,7 +10,7 @@ function ImageGallery({ images, onImageClick }) {
           key={image.id}
           onClick={() => onImageClick(image)}
         >
-          <ImageCard image={image} />
+          <ImageCard image={image} onImageClick={onImageClick} />
         </li>
       ))}
     </ul>
